@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>你好 | Hello</title>
+    <link rel="stylesheet" href="./glass.css">
+    <link rel="stylesheet" href="./../css/fonts.css">
+    <style>
+        /* 新增：定义淡入动画 */
+        @keyframes fadeIn {
+            from {
+                top: 20%;
+                opacity: 0;
+            }
+
+            to {
+                opacity: 2;
+                top: 5%;
+                font-size: 100px;
+            }
+        }
+
+        .text-container {
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            /* 横向居中 */
+            align-items: center;
+            /* 纵向居中 */
+            position: absolute;
+
+            /* 距离屏幕上边20% */
+            animation: fadeIn 2s forwards;
+            /* 应用淡入动画 */
+
+        }
+
+        @keyframes settingsIn {
+            from {
+                opacity: 0;
+                height: 0;
+                top: 80vh;
+            }
+
+            to {
+                opacity: 1;
+                height: calc(100vh - 5vh - 100px - 20vh);
+                top: calc(5vh + 100px + 10vh);
+            }
+        }
+
+        .settings {
+            position: absolute;
+            margin: 10px;
+            border: 3px solid rgba(0, 0, 0, 0.096);
+            padding: 10px;
+
+            width: 80%;
+            background-color: rgb(250, 250, 250);
+            border-radius: 10px;
+            animation: settingsIn 2s forwards;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: center;
+            align-content: stretch;
+            gap: 10px
+        }
+
+        .arrow-button {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            color: white;
+            border-radius: 50%;
+            /* 圆形 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            /* 平滑过渡效果 */
+            font-size: 50px;
+        }
+
+        .arrow-button:active {
+            background-color: #ffffff;
+            /* 点击时变亮 */
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"
+        style="position: absolute;left: 0;top: 0;width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;">
+        <div id="text-container" class="text-container">
+            设置
+        </div>
+        <div class="settings">
+            <p>壁纸设置</p>
+            <div class="arrow-button" onclick="pageSwitch('./hello.html')">→</div>
+        </div>
+    </div>
+</body>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const title = urlParams.get('title');
+    const titleword = urlParams.get('realtitle');
+    console.log(title, titleword);
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const titles = [title, "    |      ", "设置 | Settings"];
+        let currentTitleIndex = 0;
+        let index = 0;
+        let loopCount = 0; // 控制循环次数
+        const totalLoops = titles.length - 1; // 总循环次数为标题数量 - 1
+
+        function changeTitle() {
+            const originalTitle = titles[currentTitleIndex];
+            const newTitle = titles[(currentTitleIndex + 1) % titles.length];
+
+            // 调试日志
+            console.log("Original Title:", originalTitle);
+            console.log("New Title:", newTitle);
+            console.log("Index:", index);
+
+            if (index <= newTitle.length) {
+                // 逐字切换标题
+                document.title = newTitle.substring(0, index) + originalTitle.substring(index);
+                index++;
+                setTimeout(changeTitle, 100);
+                console.log("Current Title:", document.title);
+            } else {
+                // 完成当前标题切换
+                document.title = newTitle; // 确保最终标题是完整的
+                currentTitleIndex = (currentTitleIndex + 1) % titles.length;
+                index = 0;
+                loopCount++; // 更新循环次数
+                console.log("Switched to Title:", document.title);
+
+                // 检查是否完成所有循环
+                if (loopCount < totalLoops) {
+                    setTimeout(changeTitle, 0); // 延迟 1 秒后开始下一轮切换
+                } else {
+                    console.log("All titles have been switched.");
+                }
+            }
+        }
+
+        changeTitle();
+    });
+
+    const container = document.getElementById("text-container");
+
+    const screenwidth = window.innerWidth; // 获取屏幕宽度
+    const screenheight = window.innerHeight;
+    console.log(screenwidth, screenheight, 0.3 * screenheight);
+
+    // 计算字体大小
+    let fontSize = 0.9 * screenwidth / 2;
+    console.log(fontSize);
+    fontSize = Math.min(fontSize, 0.3 * screenheight);
+    console.log(fontSize);
+    container.style.fontSize = `${fontSize}px`;
+
+</script>
+
+</html>

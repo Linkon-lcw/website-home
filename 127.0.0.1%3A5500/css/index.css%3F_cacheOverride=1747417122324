@@ -1,0 +1,406 @@
+body {
+  background-color: #111;
+  font-size: 1rem;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  color-scheme: dark;
+  font-family: 'Misans VF',MiSans VF,noto sans sc,Noto Sans SC,noto sans,Noto Sans,system-ui,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+  /* 不知道从哪飞来的野生字体使它不生效，凑合着看吧 */
+}
+
+iframe {
+  all: unset;
+  height: 100%;
+  width: 100%;
+}
+
+a {
+  color: #fff;
+}
+
+a::after {
+  content: "\21f2";
+}
+
+a[target="_blank"]::before {
+  content: "\21f1";
+}
+
+a[target="_blank"]::after {
+  content: unset;
+}
+
+img {
+  width: auto;
+  /* 为什么不是100%呢 */
+  /* width: 100%; */
+  /* 因为整个屏幕的图片很讨厌 */
+  max-width: 100%;
+  /*padding: 0.5rem 0 0 0;*/
+}
+
+code {
+  font-family: monospace;
+}
+
+pre {
+  font-family: monospace;
+  overflow-x: auto;
+  margin: 0;
+}
+
+pre code {
+  background: unset;
+  border: unset;
+  margin: 0;
+}
+
+mark {
+  color: #000;
+  background-color: #fff;
+}
+
+input {
+  margin: 1rem;
+  background-color: #444;
+  box-shadow: 0 1px 0 #fff4, 0 -1px 0 #0008;
+  color: #fff;
+  border: unset;
+}
+
+input:hover {
+  box-shadow: unset;
+}
+
+input:active,
+input:focus {
+  outline: unset;
+  border: unset;
+  box-shadow: 0 1px 0 #0f0;
+}
+
+button {
+  margin: 1rem;
+  background-color: #444;
+  box-shadow: 0 1px 0 #0008, 0 -1px 0 #fff4;
+  color: #fff;
+  border: unset;
+}
+
+button:hover {
+  box-shadow: unset;
+}
+
+button:active {
+  box-shadow: 0 1px 0 #fff4, 0 -1px 0 #0008;
+  
+}
+
+td {
+  /*box-shadow: 0 1px 0 #888, 1px 0 0 #888;*/
+  border: 1px solid #888;
+}
+
+  tr:first-child td, tr:first-child th { border-top: none; }    /* 首行顶部无边框 */
+  tr:last-child td, tr:last-child th { border-bottom: none; }   /* 末行底部无边框 */
+  td:first-child, th:first-child { border-left: none; }         /* 首列左侧无边框 */
+  td:last-child, th:last-child { border-right: none; }         /* 末列右侧无边框 */
+
+table {
+  border-collapse: collapse;
+  border: none;
+  width: 100%;
+}
+
+span {
+  vertical-align: middle;
+}
+
+h1 {
+  all: unset;
+}
+
+p {
+  margin: 1rem;
+}
+
+.tag {
+  background-color: #444;
+  border: 1px solid #888;
+  font-size: 0.8rem;
+  margin: auto 0.5ch;
+  vertical-align: middle;
+}
+
+.markdown-body img {
+  width: unset;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: calc(25% + 1rem);
+  overflow-y: scroll;
+  transition: all 0.5s ease-in-out;
+  direction: rtl;
+}
+
+.sidebar div {
+  direction: ltr;
+}
+
+.sidebarExpand {
+  width: calc(75% + 1rem);
+}
+
+.sidebarVertical {
+  top: 0;
+  left: 0;
+  height: calc(33% - 1rem);
+  width: 100%;
+}
+
+.sidebarHide {
+  left: calc(-25% - 1rem);
+}
+
+.main {
+  position: fixed;
+  top: 0;
+  left: 25%;
+  height: 100%;
+  width: 75%;
+  overflow-y: scroll;
+  transition: all 0.5s ease-in-out;
+}
+
+.mainExpand {
+  left: 75%;
+}
+
+.mainVertical {
+  top: 33%;
+  left: 0;
+  height: 66%;
+  width: 100%;
+}
+
+.mainFull {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.window {
+  margin: 1rem;
+  background-color: #44444444;
+  border: 1px solid #888;
+  border-radius: 5px;
+  box-shadow: 0 2px 0 #00000080;
+}
+
+.windowTitle {
+  position: sticky;
+  top: 0;
+  z-index: 114;
+  background-color: #888;
+  box-shadow: 0 2px 0 #00000080;
+  /* border-top-left-radius: 5px;
+  border-top-right-radius: 5px; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.level2 {
+  top: 1.5rem;
+  z-index: 113;
+}
+
+.level3 {
+  top: 3rem;
+  z-index: 112;
+}
+
+.level4 {
+  top: 4.5rem;
+  z-index: 111;
+}
+
+.yellow {
+  background-color: #440;
+  border: 1px solid #880;
+}
+
+.yellowT {
+  background-color: #880;
+}
+
+.red {
+  background-color: #400;
+  border: 1px solid #800;
+}
+
+.redT {
+  background-color: #800;
+}
+
+.blue {
+  background-color: #004;
+  border: 1px solid #008;
+}
+
+.blueT {
+  background-color: #008;
+}
+
+.code {
+  background-color: rgb(13, 17, 23);
+  border: 1px solid rgb(26, 34, 46);
+}
+
+.codeT {
+  background-color: rgb(26, 34, 46);
+}
+
+.green {
+  background-color: #040;
+  border: 1px solid #080;
+}
+
+.greenT {
+  background-color: #080;
+}
+
+.diagonal {
+  /* 斜线 */
+  background:
+    repeating-linear-gradient(-45deg,
+      #333,
+      #333 0.5rem,
+      #555 0.5rem,
+      #555 1rem);
+  border: 1px solid #888;
+}
+
+.diagonalYellow {
+  background:
+    repeating-linear-gradient(-45deg,
+      #330,
+      #330 0.5rem,
+      #550 0.5rem,
+      #550 1rem);
+  border: 1px solid #880;
+}
+
+.diagonalRed {
+  background:
+    repeating-linear-gradient(-45deg,
+      #300,
+      #300 0.5rem,
+      #500 0.5rem,
+      #500 1rem);
+  border: 1px solid #800;
+}
+
+.diagonalBlue {
+  background:
+    repeating-linear-gradient(-45deg,
+      #003,
+      #003 0.5rem,
+      #005 0.5rem,
+      #005 1rem);
+  border: 1px solid #008;
+}
+
+.diagonalGreen {
+  background:
+    repeating-linear-gradient(-45deg,
+      #030,
+      #030 0.5rem,
+      #050 0.5rem,
+      #050 1rem);
+  border: 1px solid #080;
+}
+
+.nav {
+  text-align: center;
+  
+}
+
+.nav div {
+  margin: 1rem;
+}
+
+.nav hr {
+  height: 1px;
+  margin: 0;
+  background-color: #888;
+  color: #888;
+  border: unset;
+  box-shadow: 0 2px 0 #00000080;
+}
+
+.large2rem {
+  font-size: 2rem;
+}
+
+.hide {
+  display: none;
+}
+
+.hideText {
+  vertical-align: unset;
+  color: #000;
+  background-color: #000;
+  transition: all 0.5s;
+}
+.hideText:hover {
+  color: #fff;
+  background-color: unset;
+}
+
+.sidebarHideTip {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.all {
+  background-color: #f0f2;
+}
+
+.arm64-v8a,
+.armeabi-v7a,
+.x86,
+.x86_64 {
+}
+
+.highlightArch {
+  background-color: #0f02;
+}
+
+.hideSidebarTip {
+  position: fixed;
+  z-index: 115;
+  right: 1rem;
+  top: 1rem;
+  opacity: 0.99;
+  box-shadow: 0 0 1rem #000;
+}
+
+@media screen and (max-width: 539px) {
+  /* page zoom for mobile devices */
+  @supports (zoom: 1) {
+    body {
+      /* 0.5 is best */
+      /* but i think 2/3 is best qwq */
+      zoom: calc(2 / 3);
+    }
+  }
+  @supports not (zoom: 1) {
+  }
+}

@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'OPlusSans3-Medium';
+    src: url('https://www.coloros.com/font/OPlusSans3-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url('https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap');
+@import url('https://cdn-font.hyperos.mi.com/font/css?family=MiSans:100,200,300,400,450,500,600,650,700,900:Chinese_Simplify,Latin&display=swap');
+
+body {
+    font-family: MiSans VF,MiSans,OPlusSans3-Medium,'MiSans VF','MiSans','Segoe UI',system-ui,sans-serif; 
+}

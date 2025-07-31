@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你好 | Hello</title>
+    <link rel="stylesheet" href="./../glass.css">
+    <link rel="stylesheet" href="./../css/fonts.css">
+    <style>
+        body {
+            font-family: MiSans VF, MiSans, OPlusSans3-Medium, 'MiSans VF', 'MiSans', 'Segoe UI', system-ui, sans-serif;
+
+        }
+
+        /* 定义逐字渐变的动画 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .text-container {
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            /* 横向居中 */
+            align-items: center;
+            /* 纵向居中 */
+            position: absolute;
+            top: 20%;
+            /* 距离屏幕上边20% */
+        }
+
+        .char {
+            opacity: 0;
+            transition: all 0.5s ease;
+            animation: fadeIn 0.5s forwards;
+        }
+        .char:hover {
+            color: #000000cb;
+            transform: scale(1.1);
+        }
+
+        /* 新增按钮样式 */
+        .arrow-button {
+            position: absolute;
+            top: 70vh;
+            left: calc(50% - 50px);
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            color: white;
+            border-radius: 50px;
+            /* 圆形 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.5s ease;
+            transition: all 0.3s ease;
+            /* 平滑过渡效果 */
+            font-size: 50px;
+            
+        }
+
+        .arrow-button:active {
+            background-color: #ffffff00;
+            /* 点击时变亮 */
+            color: black;
+        }
+        .arrow-button:hover {
+            
+            border-radius: 50%;
+            transform: scale(2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="position: absolute;left: 0;top: 0;width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;">
+
+    <!-- 添加一个容器用于显示逐字渐变文本 -->
+    <div id="text-container" class="text-container"></div>
+
+    <!-- 新增按钮 -->
+    <div class="arrow-button" onclick="pageSwitch('./settings.html')">→</div>
+    </div>
+    <script>
+        // JavaScript动态生成逐字渐变文本
+        const texts = ["你好", "Hello", "こんにちは", "Привет", "Welcome",]; // 定义需要轮换显示的文本
+        let currentIndex = 0; // 当前显示文本的索引
+        const container = document.getElementById("text-container");
+
+        function updateText() {
+            container.innerHTML = ""; // 清空容器内容
+            const text = texts[currentIndex]; // 获取当前索引对应的文本
+            const totalChars = text.length; // 计算字符总数
+            const animationDuration = 1; // 总动画时长为1秒
+
+            const screenwidth = window.innerWidth; // 获取屏幕宽度
+            const screenheight = window.innerHeight;
+            console.log(screenwidth, screenheight, 0.3 * screenheight);
+
+            // 计算字体大小
+            let fontSize = 0.9 * screenwidth / totalChars;
+            console.log(fontSize);
+            fontSize = Math.min(fontSize, 0.3 * screenheight);
+            console.log(fontSize);
+            container.style.fontSize = `${fontSize}px`;
+
+            for (let i = 0; i < text.length; i++) {
+                const charElement = document.createElement("span");
+                charElement.textContent = text[i];
+                charElement.classList.add("char");
+                charElement.style.animationDelay = `${(i / totalChars) * animationDuration}s`; // 动态计算每个字符的动画延迟
+                container.appendChild(charElement);
+            }
+            document.title = "你好 | "+text;
+            console.log(text);
+            currentIndex = (currentIndex + 1) % texts.length; // 更新索引以实现轮换
+        }
+
+        setInterval(updateText, 4000); // 每隔4秒调用一次updateText函数（1秒显示 + 3秒等待）
+        updateText(); // 初始化显示第一个文本
+
+        function pageSwitch(url) {
+            // 获取容器元素
+            const container = document.querySelector('.container');
+            // 为容器添加淡出动画
+            container.style.transition = 'all 0.5s ease';
+            container.style.opacity = '0';
+            // 在动画结束后切换页面
+            setTimeout(() => {
+                window.location.href = url+"?title="+document.title; // 替换为目标页面的 URL;
+            }, 1000); // 延迟 1 秒
+        }
+    </script>
+</body>
+
+</html>

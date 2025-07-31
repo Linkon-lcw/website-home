@@ -1,0 +1,46 @@
+/* body{
+    background-color: rgb(150, 255, 182);
+}
+
+.navbar{
+    background-color: rgb(172, 255, 161);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.navbar-brand{
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(150, 255, 182);
+}
+
+.navbar-nav{
+    margin-left: auto;
+}
+
+.navbar-nav li{
+    margin-right: 20px;
+}
+
+.navbar-nav li a{
+    color: rgb(150, 255, 182);
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar-nav li a:hover{
+    color: rgb(100, 200, 150);
+}
+
+
+
+.cotainer {
+    left: 10%;
+    width: 90%;
+    height: 100vh;
+    background-color: rgb(172, 255, 161);
+    padding-left: 8%;
+    padding-right: 8%;
+    box-sizing: border-box;
+} */
