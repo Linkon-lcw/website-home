@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+  
+<script src="background.js"></script>
+
+<head>
+  <title>网站</title>
+  <link rel="stylesheet" href="./glass.css">
+  <link rel="stylesheet" href="./css/fonts.css">
+  <style>
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      /* backdrop-filter: blur(5px); */
+    }
+
+    .bar {
+      background-color: rgba(0, 0, 0, 0.503);
+      backdrop-filter: blur(20px);
+      padding: 0px;
+      text-align: center;
+      font-size: 24px;
+      color: white;
+      height: auto;
+    }
+
+    .menu {
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      background-color: rgba(255, 255, 255, 0.178);
+      backdrop-filter: blur(1px);
+      padding: 10px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3vh;
+      height: 3vh;
+    }
+
+    .menu a svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.435);
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: center;
+      justify-content: center;
+      overflow-x: auto;
+      width: 30%;
+      max-width: 50vh;
+      /* 修改宽度为50% */
+      height: 100%;
+      backdrop-filter: blur(40px);
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      /* 确保左边缘对齐屏幕左侧 */
+      right: auto;
+      /* 移除右边缘的固定值 */
+      color: white;
+      transition: width 0.75s ease, height 0.5s ease, border-radius 1s ease, transform 0.75s ease;
+      /* 添加 transform 过渡效果 */
+    }
+
+    .container>* {
+      transition: transform 0.75s ease;
+      /* 添加子元素的 transform 过渡效果 */
+    }
+
+    @media (max-aspect-ratio: 1/1) {
+      .container {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        font-size: 48px;
+        justify-content: flex-start;
+      }
+    }
+
+    line {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      transition: width 0.75s ease, height 0.5s ease, border-radius 1s ease;
+    }
+
+    .kun {
+      color: white;
+    }
+
+    .card {
+      width: 25vh;
+      box-sizing: border-box;
+      height: 25vh;
+      background-color: rgba(238, 238, 238, 0.154);
+      backdrop-filter: blur(50px);
+      margin: 10px;
+      border-radius: 5px;
+      text-align: center;
+      padding: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .card a {
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .search-bar {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(255, 255, 255, 0.178);
+      backdrop-filter: blur(20px);
+      padding: 10px;
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      width: 50%;
+      max-width: 600px;
+    }
+
+    .search-bar input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      outline: none;
+      color: white;
+      font-size: 16px;
+      padding: 5px;
+    }
+
+    ::placeholder {
+      color: white;
+    }
+
+    .search-bar img {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .glass-button-setting {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background-color: rgba(255, 255, 255, 0.178);
+      backdrop-filter: blur(20px);
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .glass-button-setting:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .settings-menu {
+      display: none;
+      position: absolute;
+      bottom: 70px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.435);
+      backdrop-filter: blur(40px);
+      padding: 20px;
+      border-radius: 15px;
+      color: white;
+      width: 200px;
+    }
+
+    .settings-menu a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin-bottom: 10px;
+    }
+
+    .settings-menu input[type="range"] {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .fullscreen-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1s;
+    }
+
+    body {
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div style="position: absolute;top: 0;left: 0;"></div>
+  <div class='container'>
+    <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <h1 id="name"></h1>
+    <!-- 按钮，点击后播放不同的音频 -->
+    <line>
+      <a href="#" onclick="pageSwitch('./launcher.html')"><button class="glass-button">进入</button></a>
+    </line>
+  </div>
+    
+    <div class="settingsbar-home" id="settingsbar"></div>
+  </div>
+  
+  <!-- <button class="glass-button-setting" onclick="toggleSettingsMenu()">设置</button> -->
+  <div class="settings-menu" id="settingsMenu">
+    <p>模糊度设置</p>
+    <input type="range" min="3" max="100" value="40" oninput="updateContainerBlur(this.value)">
+  </div>
+
+  <div class="fullscreen-overlay" id="overlay"></div>
+
+ 
+  <script>
+
+// // 定义一个函数用于去掉 URL 中的 http:// 和 https://
+function removeProtocol(url) {
+  return url.replace(/^(https?:\/\/)/, '');
+}
+    function toggleSettingsMenu() {
+      var menu = document.getElementById('settingsMenu');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function updateContainerBlur(value) {
+      var container = document.querySelector('.container');
+      container.style.backdropFilter = `blur(${value}px)`;
+      // 保存模糊度到 cookie
+      document.cookie = "blurValue=" + value + "; path=/; max-age=" + (60 * 60 * 24 * 30);
+    }
+
+    function loadBlurValue() {
+      // 读取 cookie 中的模糊度值
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        if (cookie.startsWith("blurValue=")) {
+          var blurValue = cookie.split('=')[1];
+          updateContainerBlur(blurValue); // 应用模糊度
+          document.querySelector('input[type="range"]').value = blurValue; // 更新输入框的值
+          break;
+        }
+      }
+    }
+
+    // 页面加载时读取模糊度
+    window.onload = function() {
+      loadBlurValue();
+      document.body.classList.add('loaded'); // 触发透明度动画
+      // console.log(Window.location.href);
+      var url = document.domain;
+      document.getElementById('name').textContent = url;
+    };
+
+    function changeWallpaper(url) {
+      fetch(url)
+        .then(response => response.blob())
+        .then(blob => {
+          const imageUrl = URL.createObjectURL(blob);
+          document.body.style.backgroundImage = `url(${imageUrl})`;
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    function pageSwitch(url) {
+      // 获取容器元素
+      const container = document.querySelector('.container');
+      // 为容器添加淡出动画
+      container.style.transition = 'opacity 1s ease';
+      container.style.opacity = '0';
+      // 在动画结束后切换页面
+      setTimeout(() => {
+        window.location.href = url;
+      }, 1000); // 延迟 1 秒
+    }
+  </script>
+
+</body>
+
+</html>

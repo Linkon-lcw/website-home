@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>磁贴导航</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column; /* 竖向排列 */
+    overflow-x: auto; /* 横向滚动 */
+  }
+
+  .tile {
+    width: 150px; /* 磁贴宽度 */
+    height: 150px; /* 磁贴高度 */
+    margin: 10px; /* 磁贴间距 */
+    background-color: #eee;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease; /* 动画效果 */
+  }
+
+  .tile:hover {
+    transform: scale(1.1); /* 鼠标悬停时放大 */
+  }
+
+  .tile img {
+    width: 100%;
+    height: auto;
+  }
+
+  .tile h2 {
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="tile">
+      <img src="https://via.placeholder.com/150" alt="图片">
+      <h2>标题 1</h2>
+    </div>
+    <div class="tile">
+      <img src="https://via.placeholder.com/150" alt="图片">
+      <h2>标题 2</h2>
+    </div>
+    <!-- 添加更多磁贴 -->
+  </div>
+</body>
+</html>

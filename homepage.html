@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>主页</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-image: url('https://bing.img.run/rand_uhd.php');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+    }
+
+    .bar {
+      background-color: rgba(0, 0, 0, 0.503);
+      backdrop-filter: blur(20px);
+      padding: 0px;
+      text-align: center;
+      font-size: 24px;
+      color:white;
+      height: auto;
+    }
+
+    .menu {
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      background-color: rgba(255, 255, 255, 0.178);
+      backdrop-filter: blur(1px);
+      padding: 10px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3vh;
+      height: 3vh;
+    }
+
+    .menu a svg {
+      width: 100%;
+      height: auto;
+    }
+
+
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      overflow-x: auto;
+      width: 100%;
+      height: 89vh;
+    }
+
+    .card {
+      width: 25vh;
+      box-sizing: border-box;
+      height: 25vh;
+      background-color: rgba(238, 238, 238, 0.154);
+      backdrop-filter: blur(50px);
+      margin: 10px;
+      border-radius: 5px;
+      text-align: center;
+      padding: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .card a {
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 100vh) {
+      .container {
+        flex-flow: row wrap;
+      }
+    }
+
+    .search-bar {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(255, 255, 255, 0.178);
+      backdrop-filter: blur(20px);
+      padding: 10px;
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      width: 50%;
+      max-width: 600px;
+    }
+
+    .search-bar input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      outline: none;
+      color: white;
+      font-size: 16px;
+      padding: 5px;
+    }
+
+    ::placeholder {
+      color: white;
+    }
+
+    .search-bar img {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="menu"><a href="./index.html">
+      <?xml version="1.0" encoding="UTF-8"?>
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"
+        version="1.1">
+        <title>Public/ic_public_more_filled</title>
+        <defs>
+          <path
+            d="M6.5,15 C7.6045695,15 8.5,15.8954305 8.5,17 C8.5,18.1045695 7.6045695,19 6.5,19 C5.3954305,19 4.5,18.1045695 4.5,17 C4.5,15.8954305 5.3954305,15 6.5,15 Z M17.5,15 C18.6045695,15 19.5,15.8954305 19.5,17 C19.5,18.1045695 18.6045695,19 17.5,19 C16.3954305,19 15.5,18.1045695 15.5,17 C15.5,15.8954305 16.3954305,15 17.5,15 Z M6.5,5 C7.6045695,5 8.5,5.8954305 8.5,7 C8.5,8.1045695 7.6045695,9 6.5,9 C5.3954305,9 4.5,8.1045695 4.5,7 C4.5,5.8954305 5.3954305,5 6.5,5 Z M17.5,5 C18.6045695,5 19.5,5.8954305 19.5,7 C19.5,8.1045695 18.6045695,9 17.5,9 C16.3954305,9 15.5,8.1045695 15.5,7 C15.5,5.8954305 16.3954305,5 17.5,5 Z"
+            id="_path-1" />
+        </defs>
+        <g id="_Public/ic_public_more_filled" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <mask id="_mask-2" fill="white">
+            <use xlink:href="#_path-1" />
+          </mask>
+          <use id="_形状结合" fill="#ffffff" xlink:href="#_path-1" />
+        </g>
+      </svg>
+    </a></div>
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="搜索...">
+    <img src="https://www.bing.com/favicon.ico" alt="搜索" onclick="search()">
+  </div>
+
+  <script>
+    function search() {
+      var query = document.getElementById('search-input').value;
+      window.location.href = 'https://www.bing.com/search?q=' + encodeURIComponent(query);
+    }
+  </script>
+</body>
+
+</html>

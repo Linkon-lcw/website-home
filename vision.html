@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>072211.xyz</title>
+  <link rel="stylesheet" href="./glass.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-image: url('https://bing.img.run/uhd.php');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      /* backdrop-filter: blur(5px); */
+    }
+
+    .bar {
+      background-color: rgba(0, 0, 0, 0.503);
+      backdrop-filter: blur(20px);
+      padding: 0px;
+      text-align: center;
+      font-size: 24px;
+      color: white;
+      height: auto;
+    }
+
+    .menu {
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      background-color: rgba(255, 255, 255, 0.178);
+      backdrop-filter: blur(1px);
+      padding: 10px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3vh;
+      height: 3vh;
+    }
+
+    .menu a svg {
+      width: 100%;
+      height: auto;
+    }
+
+
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.01);
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: center;
+      justify-content: center;
+      overflow-x: auto;
+      width: 75vh;
+      height: 75vh;
+      backdrop-filter: blur(20px);
+      border-radius: 30px;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+    }
+
+    line {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
+
+    .kun {
+      color: white;
+
+    }
+
+
+
+    .card {
+      width: 25vh;
+      box-sizing: border-box;
+      height: 25vh;
+      background-color: rgba(238, 238, 238, 0.154);
+      backdrop-filter: blur(50px);
+      margin: 10px;
+      border-radius: 5px;
+      text-align: center;
+      padding: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+
+    .card a {
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 100vh) {
+      .container {
+        flex-flow: row wrap;
+      }
+    }
+
+    .search-bar {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(255, 255, 255, 0.178);
+      backdrop-filter: blur(20px);
+      padding: 10px;
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      width: 50%;
+      max-width: 600px;
+    }
+
+    .search-bar input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      outline: none;
+      color: white;
+      font-size: 16px;
+      padding: 5px;
+    }
+
+    ::placeholder {
+      color: white;
+    }
+
+    .search-bar img {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class='container'>
+    <h1>072211.xyz的主页</h1>
+    <audio id="kun" src="./media/kun.mp3" preload="auto"></audio>
+    <div class="blackRectangle"></div>
+    <!-- 按钮，点击后播放不同的音频 -->
+    <line>
+      <button class="glass-button" id="button1" onclick="playSound('kun')"
+        style="font-size: 4px;">你干嘛~哈哈~诶呦</button>
+      <a href="https://vdse.bdstatic.com//192d9a98d782d9c74c96f09db9378d93.mp4"><button class="glass-button"
+          id="button2" style="width: auto;height: 30vp;font-size: 4px;">了解更多</button></a>
+
+      <script>
+        // JavaScript函数，用于播放音频
+        function playSound(soundId) {
+          var audio = document.createElement('audio');
+          audio.src = document.getElementById(soundId).src;
+          audio.play();
+        }
+      </script>
+    </line>
+    <button class="glass-button"><a href="./launcher.html">进入启动器</a></button>
+  </div>
+
+</body>
+
+</html>
